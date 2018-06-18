@@ -20,8 +20,10 @@ export class TranslatorComponent {
     public languages: Language[] = [];
     public selectedLanguage: Language = new Language();
     public baseLanguage: Language = new Language();
-    private searchHandler$ = new Subject<string>();
+    public searchHandler$ = new Subject<string>();
+    public searchText: string  = '';
 
+    public isTranslatorAdmin: boolean = true;
     public canExtend: boolean;
     public canView: boolean = true;
     public searchActive: boolean = false;
@@ -39,7 +41,7 @@ export class TranslatorComponent {
             this.canView = media == 'md' || media == 'lg';
         });
 
-        this.canExtend  = true; // @TODO @Input to pass in the option
+        this.canExtend  = true;
 
         // we get all languages from the database
         this.languages = await this.translatorService.getLanguages().take(1).toPromise();
@@ -156,7 +158,7 @@ export class TranslatorComponent {
         this.saveChanges();
     }
 
-    async deleteSegment(index, number) {
+    async deleteSegment(index) {
         await this.userPromptsService.showDialogue(
             'Are you sure!',
             'You want to delete this keyword?',

@@ -11,7 +11,7 @@
     "packagr": "ng-packagr -p ng-package.json"
   },
   "private": true,
-  "dependencies": {
+  "peerDependencies": {
     "@angular/animations": "^6.0.3",
     "@angular/cdk": "^6.2.1",
     "@angular/common": "^6.0.3",
@@ -31,7 +31,8 @@
     "shortid": "^2.2.8",
     "zone.js": "^0.8.26"
   },
-  "peerDependencies": {
+  "dependencies": {
+    "@anchorsolutions/translator": "file:dist/anchorsolutions-translator-0.0.0.tgz",
     "@angular/animations": "^6.0.3",
     "@angular/cdk": "^6.2.1",
     "@angular/common": "^6.0.3",
