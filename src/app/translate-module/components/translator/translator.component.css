@@ -1,0 +1,55 @@
+.container {
+    min-height: 100vh;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.header {
+    background-color: #232931;
+    margin-bottom: 1em;
+}
+
+.header .cell {
+    color: #fff;
+    padding: 1em .5em;
+    text-transform: uppercase;
+}
+
+.content_container {
+    border: 1px solid #393E46
+}
+
+.content_container .segment_title {
+    background-color: #393E46;
+    text-transform: uppercase;
+    padding: 1em .5em;
+    border-bottom: 1px solid #232931;
+}
+
+.content_container .segment_title .cell {
+    color: #fff;
+}
+
+.content_container .segment_title:hover {
+    background-color: #393E46
+}
+
+.content {
+    padding: 0 !important;
+}
+
+.content .cell {
+    padding: .2em .5em;
+}
+
+.content:hover {
+    cursor: pointer;
+}
+
+
+.cell {
+    overflow-x: auto;
+}
+
+.filter {
+}

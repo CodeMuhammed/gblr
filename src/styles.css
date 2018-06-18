@@ -1,1 +1,190 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto;
+    background: #eee;
+}
+
+button.mat-menu-item {
+    line-height: 24px !important;
+  }
+  a.mat-menu-item > mat-icon {
+    margin-bottom: 14px;
+  }
+  .mat-icon svg {
+    height: 24px;
+    width: 24px;
+  }
+
+.form-style {
+    min-width: 350px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .mat-select-disabled .mat-select-value {
+    color: rgb(61, 61, 61);
+}
+
+.mat-input-element:disabled {
+    color: rgb(61, 61, 61);
+}
+
+
+.section-style {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+
+
+.element-margin {
+    margin: 0 10px;
+  }
+
+
+.example-fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.mat-simple-snackbar-action {
+    color: orange !important;
+}
+
+mat-input {
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-card.mat-card {
+    margin-top: 0px;
+    margin-left:  0px;
+    margin-bottom: 10px;
+    margin-right: 0px;
+}
+
+.dialog-panel .mat-dialog-container {
+    overflow: hidden;
+  }
+
+.modal{
+      padding: 20px;
+  }
+
+.mat-tab-body {
+    margin-top: 24px;
+}
+
+.mat-card-photo {
+    margin: 3px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.mat-card-photo-thumb {
+    margin: 3px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100em;
+}
+
+.mat-card-dafult-thumb {
+    margin: 1px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.mouse-over:hover {
+    cursor: pointer;
+    background-color: #efefef;
+}
+
+.datagrid {
+    overflow: hidden;
+}
+
+.datagrid table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.datagrid table td,
+.datagrid table th {
+    padding: 10px 9px;
+}
+
+.datagrid table thead th {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.datagrid table thead {
+    border-bottom-color: #e2e2e2;
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+}
+
+.datagrid table thead th:first-child {
+    border: none;
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: bold;
+}
+
+.datagrid table tbody td {
+    color: rgba(0, 0, 0, 0.64);
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.datagrid table tbody tr:hover {
+    background-color: #efefef;
+}
+
+.datagrid table tbody .alt td {
+    color: #747080;
+}
+
+
+.datagrid table tbody td:first-child {
+    color: rgba(0, 0, 0, 0.64);
+    border-left: none;
+    font-weight: bold;
+}
+
+.datagrid table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.datagrid table tfoot {
+    border: none;
+}
+
+.mat-sidenav-content {
+    transform: none !important;
+}
+
+mat-dialog-container {
+    padding: 0!important;
+}
+
+.linkText {
+    text-decoration: none;
+    color: #4caf50;
+}

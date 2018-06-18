@@ -1,0 +1,119 @@
+<div class="container" fxLayout="column" fxLayoutAlign="top" *ngIf="canView">
+    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex class="cell">key word</div>
+        <div fxFlex class="cell">{{baseLanguage.name}} ({{baseLanguage.symbol}}) </div>
+        <div fxFlex class="cell">
+            <span [matMenuTriggerFor]="languageMenu"> 
+                {{selectedLanguage.name}} ({{selectedLanguage.symbol}}) 
+                <button mat-icon-button >
+                    <mat-icon>arrow_drop_down</mat-icon>
+                </button>
+            </span>
+
+            <mat-menu #languageMenu="matMenu">
+                <button mat-menu-item *ngFor="let language of languages" (click)="selectLanguage(language)">
+                    <span>{{language.name}} ({{language.symbol}}) </span>
+                </button>
+            </mat-menu>
+        </div>
+        <div fxFlex="8em" class="cell" fxLayoutAlign="end center">
+            <button mat-icon-button (click)="saveChanges()">
+                <mat-icon>update</mat-icon>
+            </button>
+            <button mat-icon-button *ngIf="canExtend" [matMenuTriggerFor]="controls">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <mat-menu #controls="matMenu">
+                <button mat-menu-item (click)="addLanguage()">
+                    <span>Add Language</span>
+                </button>
+                <button mat-menu-item (click)="addSegment()">
+                    <span>Add segment</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center"class="filter">
+        <div fxFlex>
+            <mat-form-field class="full-width">
+                <input [ngModel]="searchText" (ngModelChange)="searchHandler$.next($event)" matInput type="text" placeholder="search here">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex fxLayoutAlign="end center" *ngIf="user?.isTranslatorAdmin">
+            <mat-slide-toggle name="canExtend" [(ngModel)]="canExtend" class="form-control">Can extend</mat-slide-toggle>
+        </div>
+    </div>
+
+    <ng-container *ngFor="let segment of baseLanguage.segments; let s_i = index">
+        <div *ngIf="searchActive? segment.matchedSearch : true" class="content_container" fxLayout="column" >
+            <div fxFlex="4em" fxLayout="row" fxLayoutAlign="start center" class="segment_title">
+                <div fxFlex="28.5%" class="cell" fxLayoutAlign="start center">
+                    <mat-form-field class="full-width" *ngIf="canExtend" floatLabel="never">
+                        <input [ngModel]="segment.title" (ngModelChange)="updateSegmentTitle($event, s_i)" matInput type="text" required placeholder="Enter title">
+                    </mat-form-field>
+                    <span *ngIf="!canExtend">
+                    {{segment.title}}
+                </span>
+                </div>
+                <div fxFlex class="cell" fxLayoutAlign="end center">
+                    <button mat-icon-button (click)="toggleSegment(segment.title)">
+                        <mat-icon>{{segment.isOpen? 'arrow_drop_down': 'arrow_drop_up'}}</mat-icon>
+                    </button>
+                    <button mat-icon-button *ngIf="canExtend" (click)="addKeyWord(segment.title)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                    <button mat-icon-button *ngIf="canExtend" (click)="deleteSegment(s_i)">
+                        <mat-icon>delete_sweep</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div style="max-height: 30em; overflow: auto" *ngIf="segment.isOpen">
+                <div class="content" fxLayout="row" *ngFor="let translation of segment.translations; let t_i = index">
+                    <ng-container *ngIf="searchActive? translation.matchedSearch : true">
+                        <div fxFlex class="cell" fxLayoutAlign="start center">
+                            <mat-form-field class="full-width" *ngIf="canExtend" floatLabel="never">
+                                <input [ngModel]="translation.keyword" (ngModelChange)="updateSegmentKeyword($event, t_i, segment.title)" matInput type="text"
+                                    required placeholder="Enter keyword">
+                            </mat-form-field>
+                            <span *ngIf="!canExtend">
+                            {{translation.keyword}}
+                        </span>
+                        </div>
+                        <div fxFlex class="cell" fxLayoutAlign="start center">
+                            <mat-form-field class="full-width" *ngIf="canExtend" floatLabel="never">
+                                <input [ngModel]="translation.value" (ngModelChange)="updateKeywordValue($event, segment.title, translation.keyword, baseLanguage)"
+                                    matInput type="text" required placeholder="Enter value">
+                            </mat-form-field>
+                            <span *ngIf="!canExtend">
+                            {{translation.value}}
+                        </span>
+                        </div>
+                        <div fxFlex fxLayoutAlign="start center" class="cell">
+                            <mat-form-field class="full-width" *ngIf="!canExtend" floatLabel="never">
+                                <input [ngModel]="getSelectedLanguageTranslation(segment.title, translation.keyword)" (ngModelChange)="updateKeywordValue($event, segment.title, translation.keyword, selectedLanguage)"
+                                    matInput type="text" required placeholder="Enter value">
+                            </mat-form-field>
+                            <span *ngIf="canExtend">
+                            {{getSelectedLanguageTranslation(segment.title, translation.keyword)}}
+                        </span>
+                        </div>
+                        <div fxFlex="8em" fxLayoutAlign="end center" class="cell" *ngIf="canExtend">
+                            <button mat-icon-button (click)="removeKeyWord(segment.title, t_i)">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+
+<div *ngIf="!canView">
+    Switch to desktop
+</div>

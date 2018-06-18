@@ -1,0 +1,30 @@
+<div fxLayout="column" fxLayoutAlign="center space-between" [ngStyle]="{ 'height':'500px', padding: '1em', overflow: 'hidden'}">
+    <h2 fxFlex="10%" mat-dialog-title>
+        Enter new language
+    </h2>
+
+    <mat-dialog-content fxFlex>
+        <div *ngIf="form">
+            <form [formGroup]="form" fxLayout="column" role="form">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="name" class="form-control" formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="symbol" class="form-control" formControlName="symbol">
+                </mat-form-field>
+            </form>
+        </div>
+    </mat-dialog-content>
+    <div fxFlex="15%" fxLayout="row" fxLayoutAlign="center">
+        <mat-dialog-actions fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span fxFlex>
+                <button mat-button (click)="cancel()">Cancel</button>
+            </span>
+
+            <span fxFlex fxLayoutAlign="end">
+                <button (click)="continue()" color="primary" [disabled]="!form?.valid" mat-raised-button>continue</button>
+            </span>
+        </mat-dialog-actions>
+    </div>
+</div>
