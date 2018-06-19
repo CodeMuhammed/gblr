@@ -1,27 +1,30 @@
 # TranslatorModule
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This module contains the component for managing translations preferences in your angular applications.
 
-## Development server
+## What it provides
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* A translator editor compoenent that allows you to edit add and update languages
 
-## Code scaffolding
+* A service that allows you to get translations for use in your application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Development
 
-## Build
+After cloning this repository
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* `npm install --save`
+* Make your changes in the `./lib` folder
 
-## Running unit tests
+* Run `npm run build:lib`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Testing
 
-## Running end-to-end tests
+After building the the library package you will see a dist folder in `./lib/dist`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* still from the root folder of the project, run `npm i ./lib/dist`
 
-## Further help
+* Reference the components and modules you exported to your app in `./src` for testing
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Publishing the package
+Simply run `npm run publish`.
+

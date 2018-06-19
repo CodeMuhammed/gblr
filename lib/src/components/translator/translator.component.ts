@@ -22,8 +22,10 @@ export class TranslatorComponent {
     public baseLanguage: Language = new Language();
     public searchHandler$ = new Subject<string>();
     public searchText: string  = '';
-
-    public isTranslatorAdmin: boolean = true;
+    
+    @Input()
+    public isTranslatorAdmin: boolean;
+    
     public canExtend: boolean;
     public canView: boolean = true;
     public searchActive: boolean = false;

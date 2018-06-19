@@ -1,6 +1,6 @@
 {
   "name": "@anchorsolutions/translator",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -46,6 +46,7 @@
     "translate"
   ],
   "author": "Muhammed ali",
+  "private": false,
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/hansanker/translator-module/issues"

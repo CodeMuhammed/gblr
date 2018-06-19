@@ -8,11 +8,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:lib": "ng-packagr -p lib/package.json"
+    "build:lib": "ng-packagr -p lib/package.json",
+    "publish": "npm publish lib/dist --access=public"
   },
   "private": true,
   "dependencies": {
-    "@anchorsolutions/translator": "file:lib/dist",
+    "@anchorsolutions/translator": "0.0.0",
     "@angular/animations": "^6.0.3",
     "@angular/cdk": "^6.2.1",
     "@angular/common": "^6.0.3",
