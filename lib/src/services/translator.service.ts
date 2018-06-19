@@ -1,14 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { Observable } from 'rxjs/Rx';
 import { Language } from '../models/translator';
 
 @Injectable()
 export class TranslatorService {
-    private afsDB: any;
-
-    initDBService(service: any) {
-        this.afsDB = service;
-    }
+    constructor(@Inject('db') private afsDB) {}
 
     getLanguages(): Observable<Language[]> {
         return this.afsDB.colWithIds$('/languages')

@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import "hammerjs";
 import { AppComponent } from './app.component';
-import { TranslateModule } from './translate-module/translate.module';
+import { TranslateModule } from '@anchorsolutions/translator';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { TranslateModule } from './translate-module/translate.module';
   ],
   imports: [
     BrowserModule,
-    TranslateModule
+    TranslateModule.forRoot({}) // the empty object should be an instance of firestore service
   ],
   providers: [],
   bootstrap: [AppComponent]
