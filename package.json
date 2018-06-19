@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@anchorsolutions/translator": "0.0.0",
+    "@anchorsolutions/translator": "0.0.1",
     "@angular/animations": "^6.0.3",
     "@angular/cdk": "^6.2.1",
     "@angular/common": "^6.0.3",

@@ -26,7 +26,7 @@ export class TranslateModule {
             ngModule: TranslateModule,
             providers: [
                 TranslatorService,
-                {provide: 'db', useValue: db}
+                {provide: 'db', useClass: db}
             ]
         };
     }
