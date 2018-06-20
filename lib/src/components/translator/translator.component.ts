@@ -52,7 +52,7 @@ export class TranslatorComponent {
         this.baseLanguage = this.languages.find((language) => language.symbol == 'en');
 
         // we set the default selected language
-        this.selectedLanguage = this.languages.find((language) => language.symbol == 'nl');
+        this.selectedLanguage = this.languages.find((language) => language.symbol == 'en');
 
         // remove all segments from other languages that are not in base language
         this.languages.forEach((language: Language) => {
