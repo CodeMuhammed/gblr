@@ -1,10 +1,12 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { TranslatorComponent } from './components';
-import { NewLanguagePromptComponent, PromptDialog } from './entry-components';
+import { TranslatorComponent } from './components/translator/translator.component';
+import { NewLanguagePromptComponent } from './entry-components/language-form-prompt/language-form-prompt.component';
+import { PromptDialog } from './entry-components/prompt';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Mat_LOADERS } from './mat-loaders';
-import { TranslatorService, UserPromptsService } from './services';
+import { UserPromptsService } from './services/user-prompts.service';
+import { TranslatorService } from './services/translator.service';
 
 @NgModule({
     declarations: [TranslatorComponent, NewLanguagePromptComponent, PromptDialog],
@@ -27,6 +29,12 @@ export class TranslateModule {
                 TranslatorService,
                 {provide: 'db', useClass: db}
             ]
+        };
+    }
+
+    public static forChild(): ModuleWithProviders {
+        return {
+            ngModule: TranslateModule
         };
     }
 }

@@ -1,3 +1,5 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
 <div class="container" fxLayout="column" fxLayoutAlign="top" *ngIf="canView">
     <div class="header" fxLayout="row" fxLayoutAlign="start center">
         <div fxFlex class="cell">key word</div>
@@ -112,7 +114,6 @@
         </div>
     </ng-container>
 </div>
-
 
 <div *ngIf="!canView">
     Switch to desktop

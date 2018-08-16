@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar } from '@angular/material';
 import { MatDialog } from '@angular/material';
-import { PromptDialog } from '../entry-components';
+import { PromptDialog } from '../entry-components/prompt';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
 @Injectable()
 export class UserPromptsService {
     private loading = false;
-    public activeMediaQuery: string = '';
+    public activeMediaQuery = '';
 
     constructor(
         private media: ObservableMedia,
@@ -22,7 +22,7 @@ export class UserPromptsService {
 
     showLoading() {
         setTimeout(() => {
-             this.loading = true;
+            this.loading = true;
         }, 0);
     }
 
@@ -37,11 +37,11 @@ export class UserPromptsService {
     }
 
     showToast(message: string, actionText: string, actionCallbak?: any) {
-        let snackbarRef = this.snackBar.open(message, actionText, {
+        const snackbarRef = this.snackBar.open(message, actionText, {
             duration: 4000
         });
 
-        if(actionCallbak) {
+        if (actionCallbak) {
             snackbarRef.onAction().subscribe(() => {
                 actionCallbak();
             });
@@ -49,8 +49,8 @@ export class UserPromptsService {
     }
 
     showDialogue(title: string, message: string, handler?: any) {
-        let { width, height } = this.getDimension();
-        let dialogRef = this.dialog.open(PromptDialog, {
+        const { width, height } = this.getDimension();
+        const dialogRef = this.dialog.open(PromptDialog, {
             width,
             height,
             data: {
@@ -70,19 +70,19 @@ export class UserPromptsService {
                 this.hideLoading();
                 resolve(res);
             })
-            .catch((err) => {
-                this.hideLoading();
-                reject(err);
-            });
+                .catch((err) => {
+                    this.hideLoading();
+                    reject(err);
+                });
         });
     }
 
-    //calculates the appropriate length and height based on media
+    // calculates the appropriate length and height based on media
     private getDimension() {
-        let isXs = this.activeMediaQuery == 'xs';
+        const isXs = this.activeMediaQuery === 'xs';
         return {
-            width: isXs? '100%' : '500px',
-            height: isXs? '50vh' : '300px'
+            width: isXs ? '100%' : '500px',
+            height: isXs ? '50vh' : '300px'
         };
     }
 
