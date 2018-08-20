@@ -5,10 +5,8 @@ import { Language, Segment, Translation } from '../../models/translator';
 import { UserPromptsService } from '../../services/user-prompts.service';
 import { TranslatorService } from '../../services/translator.service';
 import { Subject } from 'rxjs';
-
 import { MatDialog } from '@angular/material';
 import { NewLanguagePromptComponent } from '../../entry-components/language-form-prompt/language-form-prompt.component';
-
 import * as shortId from 'shortid';
 
 @Component({
@@ -22,6 +20,7 @@ export class TranslatorComponent implements OnInit {
     public selectedLanguage: Language = new Language();
     public baseLanguage: Language = new Language();
     public searchHandler$ = new Subject<string>();
+    public saveHandler$ = new Subject<string>();
     public searchText: string;
 
     @Input()
@@ -71,6 +70,9 @@ export class TranslatorComponent implements OnInit {
 
         // handle searching the translation files
         this.searchHandler$.debounceTime(1000).subscribe((searchText) => this.search(searchText));
+
+        // handles auto saving the data
+        this.saveHandler$.debounceTime(3000).subscribe(this.saveChanges.bind(this));
     }
 
     isSegmentValid(segmentTitle: string) {
@@ -106,7 +108,10 @@ export class TranslatorComponent implements OnInit {
             return data.keyword === keyword;
         });
 
-        translation ? translation.value = value : '';
+        if (translation) {
+            translation.value = value;
+            this.saveHandler$.next();
+        }
     }
 
     addKeyWord(segmentTitle: string) {
@@ -158,7 +163,7 @@ export class TranslatorComponent implements OnInit {
         });
 
         this.toggleSegment(segmentTitle);
-        this.saveChanges();
+        this.saveHandler$.next();
     }
 
     async deleteSegment(index) {
@@ -171,7 +176,7 @@ export class TranslatorComponent implements OnInit {
                         language.segments.splice(index, 1);
                     });
 
-                    this.saveChanges();
+                    this.saveHandler$.next();
                 }
             }
         );
@@ -181,6 +186,8 @@ export class TranslatorComponent implements OnInit {
         this.languages.forEach((language: Language) => {
             language.segments[index].title = newTitle;
         });
+
+        this.saveHandler$.next();
     }
 
     updateSegmentKeyword(newKeyword: string, index: number, segmentTitle: string) {
@@ -191,6 +198,8 @@ export class TranslatorComponent implements OnInit {
 
             selectedSegment.translations[index].keyword = newKeyword;
         });
+
+        this.saveHandler$.next();
     }
 
     segmentDataValid(editedSegment: Segment) {

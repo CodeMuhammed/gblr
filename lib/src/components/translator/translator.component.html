@@ -19,9 +19,6 @@
             </mat-menu>
         </div>
         <div fxFlex="8em" class="cell" fxLayoutAlign="end center">
-            <button mat-icon-button (click)="saveChanges()">
-                <mat-icon>update</mat-icon>
-            </button>
             <button mat-icon-button *ngIf="canExtend" [matMenuTriggerFor]="controls">
                 <mat-icon>more_vert</mat-icon>
             </button>
@@ -87,8 +84,8 @@
                         </div>
                         <div fxFlex class="cell" fxLayoutAlign="start center">
                             <mat-form-field class="full-width" *ngIf="canExtend" floatLabel="never">
-                                <input [ngModel]="translation.value" (ngModelChange)="updateKeywordValue($event, segment.title, translation.keyword, baseLanguage)"
-                                    matInput type="text" required placeholder="Enter value">
+                                <textarea matTextareaAutosize [ngModel]="translation.value" (ngModelChange)="updateKeywordValue($event, segment.title, translation.keyword, baseLanguage)"
+                                    matInput type="text" required placeholder="Enter value"></textarea>
                             </mat-form-field>
                             <span *ngIf="!canExtend">
                             {{translation.value}}
@@ -96,8 +93,8 @@
                         </div>
                         <div fxFlex fxLayoutAlign="start center" class="cell">
                             <mat-form-field class="full-width" *ngIf="!canExtend" floatLabel="never">
-                                <input [ngModel]="getSelectedLanguageTranslation(segment.title, translation.keyword)" (ngModelChange)="updateKeywordValue($event, segment.title, translation.keyword, selectedLanguage)"
-                                    matInput type="text" required placeholder="Enter value">
+                                <textarea matTextareaAutosize [ngModel]="getSelectedLanguageTranslation(segment.title, translation.keyword)" (ngModelChange)="updateKeywordValue($event, segment.title, translation.keyword, selectedLanguage)"
+                                    matInput type="text" required placeholder="Enter value"></textarea>
                             </mat-form-field>
                             <span *ngIf="canExtend">
                             {{getSelectedLanguageTranslation(segment.title, translation.keyword)}}
