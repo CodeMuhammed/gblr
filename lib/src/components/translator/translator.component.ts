@@ -35,7 +35,9 @@ export class TranslatorComponent implements OnInit {
         public userPromptsService: UserPromptsService,
         private translatorService: TranslatorService,
         private media: ObservableMedia
-    ) { }
+    ) {
+        console.log('another log for translate');
+    }
 
     async ngOnInit() {
         this.media.subscribe((change: MediaChange) => {
@@ -72,7 +74,10 @@ export class TranslatorComponent implements OnInit {
         this.searchHandler$.debounceTime(1000).subscribe((searchText) => this.search(searchText));
 
         // handles auto saving the data
-        this.saveHandler$.debounceTime(3000).subscribe(this.saveChanges.bind(this));
+        this.saveHandler$.debounceTime(2000).subscribe(() => {
+            console.log('here we are');
+            this.saveChanges();
+        });
     }
 
     isSegmentValid(segmentTitle: string) {
@@ -232,6 +237,7 @@ export class TranslatorComponent implements OnInit {
     }
 
     async saveChanges() {
+        console.log('called');
         let isValid = true;
         let invalidSegment: Segment;
 
@@ -244,6 +250,7 @@ export class TranslatorComponent implements OnInit {
                 }
             });
         });
+        console.log(isValid);
 
         if (isValid) {
             // we make a deep copy of the languages we want to save
