@@ -16,4 +16,4 @@ import { AuthRouting } from './auth.routing';
         AuthRootComponent
     ]
 })
-export class AuthModule { }
+export class AuthModule { } // just added this
