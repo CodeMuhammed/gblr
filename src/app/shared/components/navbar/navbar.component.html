@@ -1,0 +1,40 @@
+<mat-sidenav-container class="app-inner">
+    <mat-sidenav 
+        #nav class="app-sidebar-panel" 
+        [mode]="isOver() ? 'over' : 'side'"
+        [opened]="!isOver() && canOpen">
+
+        <div fxLayout="column" style="height: 100vh">
+            <div fxFlex="63px" class="side_header" fxLayoutAlign="start center">
+               <span class="logoText">Translator X</span>
+            </div>
+
+            <div fxFlex>
+                <div style="overflow:auto">
+                    <mat-nav-list *ngFor="let item of items" style="padding-top: 0">
+                        <mat-list-item (click)="closeNav()" [routerLink]="item.path" routerLinkActive="menu-active" [routerLinkActiveOptions]="{exact:false}">
+                            <mat-icon style="margin-right: 6px">{{ item.icon }}</mat-icon>
+                            {{ item.name }}
+                        </mat-list-item>
+                    </mat-nav-list>
+                </div>
+            </div>
+
+            <div fxFlex="stretch"></div>
+
+             <div fxFlex fxLayoutAlign="start end" class="textA4s" *ngIf="profile" (click)="gotoProfile(); closeNav()">
+                <span fxLayout="row" fxLayoutGap="10px">
+                    <app-thumbnail [image]="profile.picture"> </app-thumbnail>
+                    <span fxLayoutAlign="center" fxLayout="column" class="user_details">
+                        <b>{{ profile.fullname }}</b>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </mat-sidenav>
+    <app-toolbar [toggleMenuButton]="isOver()" [nav]="nav"></app-toolbar>
+
+    <div style="position: relative; padding: 0">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>

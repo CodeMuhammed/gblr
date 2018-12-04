@@ -1,0 +1,15 @@
+<div class="container"
+   fxLayout="column"
+   fxLayoutAlign="center center" 
+   [ngStyle]="{'background-image': 'url(assets/images/top.jpg)' }"> 
+   <div class="login_container" fxLayout="column" fxLayoutGap="20px">
+       <button  mat-raised-button fxLayoutGap="20px" (click)="login()">
+           <mat-icon>email</mat-icon> 
+           <span>Login with google</span>
+       </button>
+
+       <span>
+           {{loginError}}
+       </span>
+   </div>
+</div>

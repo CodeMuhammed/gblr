@@ -1,0 +1,36 @@
+@import 'mixin';
+
+.spinner-wrapper {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+}
+
+.badge {
+    margin: 40px;
+}
+
+.textUi {
+    color: gray;
+    margin: 20px;
+    align-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#google {
+    border: 1px solid #95989A;
+    background: #fff url('/assets/google.svg') no-repeat 25px;
+    background-size: 25px;
+    margin-bottom: 10px;
+
+}
+
+#email {
+    background-size: 25px;
+}
+
+mat-form-field {
+    width: 100%
+}

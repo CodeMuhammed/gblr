@@ -1,0 +1,30 @@
+$gray-xl: #fbfbfb;
+$gray-l: #f0f0f0;
+$gray: #eeeeee;
+$gray-d: #dadada;
+$gray-xd: #a5a5a5;
+$primaryA: #9f1e49;
+
+$status-1: rgba(255, 150, 0, 0.51);
+$status-2: rgba(46, 128, 54, 0.61);
+$status-3: rgba(103, 203, 0, 0.6);
+$status-4: rgba(0, 157, 204, 0.46);
+$status-5: rgba(21, 0, 204, 0.46);
+$status-6: rgba(0, 0, 0, 0.41);
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  &::-webkit-scrollbar:vertical {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparentize($gray-d, 0.6);
+    border-radius: 3px;
+    border: none;
+  }
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+}

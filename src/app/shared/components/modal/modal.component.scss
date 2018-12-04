@@ -1,0 +1,68 @@
+$gray: #eeeeee;
+$gray-d: #dadada;
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  &::-webkit-scrollbar:vertical {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparentize($gray-d, 0.6);
+    border-radius: 3px;
+    border: none;
+  }
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+}
+
+// fix fixed width of mat input
+:host {
+  z-index: 10;
+
+  /deep/ .mat-form-field-infix {
+    width: inherit;
+  }
+  /deep/ .mat-button-wrapper {
+    text-transform: capitalize;
+  }
+}
+
+.modal {
+  padding: 0;
+  margin: 0;
+  max-height: 90vh;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.modal_header {
+  background-color: $gray;
+  width: 100%;
+  min-height: 4em;
+}
+
+.modal_body {
+  width: 100%;
+  overflow: auto;
+  flex: 1;
+  @include scrollbar;
+}
+
+.modal_footer {
+  padding: 1em 1em 1.5em 1em;
+  border-top: 1px solid $gray;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/deep/ .mat-tab-body-wrapper {
+  flex-grow: 1;
+}
+
+/deep/ .mat-tab-body {
+  margin-top: 0;
+}

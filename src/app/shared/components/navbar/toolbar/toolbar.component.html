@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-toolbar class="app-toolbar" color="primary" fxLayout="row">
+        <button *ngIf="toggleMenuButton && !menuItem?.backButtonEnabled" mat-icon-button (click)="open()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="menuItem?.backButtonEnabled" (click)="goBack();">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span style="margin-left: 20px" fxFlex="stretch">{{menuItem?.title}}</span>
+        <mat-slide-toggle (change)="toggleShowAll($event)" *ngIf="showAllState" [checked]="showAllState">{{ label.show_all }}</mat-slide-toggle>
+        <button *ngIf="menuItem?.searchEnabled" mat-icon-button (click)="enableSearchBar();">
+            <mat-icon>search</mat-icon>
+        </button>
+        <app-submenu *ngIf="menuItem?.submenuItems" [submenu]="menuItem?.submenuItems"></app-submenu>
+    </mat-toolbar>
+</div>

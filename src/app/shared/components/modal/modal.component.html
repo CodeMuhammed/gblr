@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="start top" class="modal" [ngStyle.xs]="{'max-height.%': 100}">
+  <div *ngIf="header" class="modal_header" fxFlex fxLayout="row" fxLayoutAlign="start center" fxShrink="0" fxGrow="0">
+    <div fxFlex>
+      <ng-content select=".modal_header"></ng-content>
+    </div>
+    <div fxFlex="3em" *ngIf="showCloseButton">
+      <button mat-icon-button (click)="closeModal()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="modal_body" fxShrink="1" fxGrow="1">
+    <ng-content select=".modal_body"></ng-content>
+  </div>
+  <div *ngIf="footer" class="modal_footer">
+    <ng-content select=".modal_footer"></ng-content>
+  </div>
+</div>

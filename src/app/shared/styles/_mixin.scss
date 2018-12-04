@@ -1,0 +1,29 @@
+@mixin auth-error() {
+	text-align: center;
+    margin: 0 auto;
+    mat-card {
+        
+        display: inline-block;
+        background: rgba(255,0, 0, .3);
+
+        margin: 0 0 10px 0;
+        padding: 0;
+        width: 100%;
+        color: grey;
+
+        mat-card-content {
+            padding: 5px !important;
+        }    
+    }
+}
+
+@mixin auth-wrapper() {
+    min-width: 500px;
+
+}
+
+@mixin auth-form() {
+	max-width: 90%;
+    width: 380px;
+    padding: 20px 0;
+}
